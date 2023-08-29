@@ -139,7 +139,7 @@ class SpeedTracker:
 if __name__ == "__main__":
     writer = False
 
-    bot_token = ""
+    bot_token = ":"
     chat_id = ""
 
     source_video_path="v1.mp4"

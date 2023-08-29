@@ -3,13 +3,14 @@ import numpy as np
 
 
 ######### INITIALIZING LOW AND HIGH VALUES
-lower_yellow = np.array([0, 0, 110])
-upper_yellow = np.array([180, 255, 255])
+lower_yellow = np.array([0, 0, 130])
+upper_yellow = np.array([166, 255, 255])
 
 
-frame = cv2.imread("photos/acik_mavi1.png")
+frame = cv2.imread("testt.png")
+
 frame3 = cv2.imread("photos/mavi1.png")
-frame2 = cv2.imread("photos/turuncu.png")
+frame2 = cv2.imread("photos/sari1.png")
 
 def draw_contour(frame_1,mask):
 
@@ -26,10 +27,11 @@ def draw_contour(frame_1,mask):
 
 while True:
     # Apply the yellow color filter
-    ############## MAIN ########## 
     yellow_mask = cv2.inRange(frame, lower_yellow, upper_yellow)
     filtered_frame = cv2.bitwise_and(frame, frame, mask=yellow_mask)
     stacked_frame = np.hstack((frame, cv2.cvtColor(yellow_mask,cv2.COLOR_GRAY2BGR ),draw_contour(frame,yellow_mask)))
+    ############## MAIN ########## 
+
     #########################################
     yellow_mask2 = cv2.inRange(frame2, lower_yellow, upper_yellow)
     filtered_frame2 = cv2.bitwise_and(frame2, frame2, mask=yellow_mask2)
@@ -42,12 +44,13 @@ while True:
     
     
     common_width = max(stacked_frame2.shape[1], stacked_frame.shape[1], stacked_frame3.shape[1])
-    stacked_frame2_resized = cv2.resize(stacked_frame2, (common_width, stacked_frame2.shape[0]))
     stacked_frame_resized = cv2.resize(stacked_frame, (common_width, stacked_frame.shape[0]))
+    stacked_frame2_resized = cv2.resize(stacked_frame2, (common_width, stacked_frame2.shape[0]))
     stacked_frame3_resized = cv2.resize(stacked_frame3, (common_width, stacked_frame3.shape[0]))
 
     # Vertically stack all three resized frames
-    stacked_frames_all = np.vstack((stacked_frame2_resized, stacked_frame_resized, stacked_frame3_resized))
+    stacked_frames_all = np.vstack((stacked_frame_resized,stacked_frame2_resized, stacked_frame3_resized))
+    #stacked_frames_all2 = np.vstack((stacked_frame,stacked_frame0))
 
     cv2.imshow('Original vs Filtered', stacked_frames_all)
     # Adjust the yellow color thresholds using trackbars

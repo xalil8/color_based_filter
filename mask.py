@@ -27,7 +27,7 @@ lower_yellow = np.array([0, 0, 110])
 upper_yellow = np.array([230, 255, 250])
 
 # Create a video capture object
-frame = cv2.imread("mavi1.png")
+frame = cv2.imread("photos/mavi1.png")
 
 # Create the yellow mask
 yellow_mask = cv2.inRange(frame, lower_yellow, upper_yellow)

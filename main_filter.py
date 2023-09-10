@@ -7,10 +7,10 @@ lower_yellow = np.array([0, 0, 130])
 upper_yellow = np.array([166, 255, 255])
 
 
-frame = cv2.imread("testt.png")
+frame = cv2.imread("halisaha.png")
 
 frame3 = cv2.imread("photos/mavi1.png")
-frame2 = cv2.imread("photos/sari1.png")
+frame2 = cv2.imread("photos/sari2.png")
 
 def draw_contour(frame_1,mask):
 
